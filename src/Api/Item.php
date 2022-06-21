@@ -3,6 +3,7 @@
 namespace Ebay\Buy\Deal\Api;
 
 use Ebay\Buy\Deal\Model\EventItemSearchResponse;
+use OpenAPI\Runtime\UnexpectedResponse;
 
 class Item extends AbstractAPI
 {
@@ -36,9 +37,9 @@ class Item extends AbstractAPI
      *                       'X-EBAY-C-MARKETPLACE-ID'	string	A header used to specify the eBay marketplace
      *                       ID
      *
-     * @return EventItemSearchResponse
+     * @return EventItemSearchResponse|UnexpectedResponse
      */
-    public function gets(array $queries = [], array $headers = []): EventItemSearchResponse
+    public function gets(array $queries = [], array $headers = [])
     {
         return $this->request(
         'getEventItems',

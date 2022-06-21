@@ -4,6 +4,7 @@ namespace Ebay\Buy\Deal\Api;
 
 use Ebay\Buy\Deal\Model\Event as EventModel;
 use Ebay\Buy\Deal\Model\EventSearchResponse;
+use OpenAPI\Runtime\UnexpectedResponse;
 
 class Event extends AbstractAPI
 {
@@ -25,9 +26,9 @@ class Event extends AbstractAPI
      *                         'X-EBAY-C-MARKETPLACE-ID'	string	A header used to specify the eBay marketplace
      *                         ID
      *
-     * @return EventModel
+     * @return EventModel|UnexpectedResponse
      */
-    public function get(string $event_id, array $headers = []): EventModel
+    public function get(string $event_id, array $headers = [])
     {
         return $this->request(
         'getEvent',
@@ -63,9 +64,9 @@ class Event extends AbstractAPI
      *                       'X-EBAY-C-MARKETPLACE-ID'	string	A header used to specify the eBay marketplace
      *                       ID
      *
-     * @return EventSearchResponse
+     * @return EventSearchResponse|UnexpectedResponse
      */
-    public function gets(array $queries = [], array $headers = []): EventSearchResponse
+    public function gets(array $queries = [], array $headers = [])
     {
         return $this->request(
         'getEvents',
